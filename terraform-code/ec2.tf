@@ -13,6 +13,7 @@ resource "aws_instance" "aws-ec2_instance" {
   instance_type          = var.aws-ec2_instance[count.index].instance_type
   key_name               = aws_key_pair.key-tf.key_name
   vpc_security_group_ids = [aws_security_group.dev_sgs[count.index].id]
+  associate_public_ip_address = true # enable public IP address
   #security_groups = [aws_se'curity_group.public_rule.id]
   #vpc_security_group_ids = element(aws_security_group.dev_sgs.*.id, [var.num[count.index]])
   #vpc_security_group_ids = [aws_security_group.allow_tls.id]
